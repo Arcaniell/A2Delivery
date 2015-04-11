@@ -4,14 +4,18 @@ package Sale;
 import com.mobox.dao.A2DeliverySessionFact;
 import com.mobox.model.Product;
 import com.mobox.model.Sale;
+import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class TestSale {
@@ -44,9 +48,25 @@ public class TestSale {
     @Test
     public void Sale(){
         Session session = A2DeliverySessionFact.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(TestSale.initSale());
-        transaction.commit();
-        A2DeliverySessionFact.closeSesFact();
+        Transaction transaction = null;
+        try {
+             transaction = session.beginTransaction();
+             session.save(TestSale.initSale());
+
+             List<Sale> query = session.createSQLQuery("select * from SALE").list();
+             for (Sale s : query) {
+                assertNotNull(s.getSaleId());
+                assertTrue(s.getSaleId() == 1);
+                assertNotNull(s.getProducts());
+             }
+             transaction.commit();
+        }catch (HibernateException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            A2DeliverySessionFact.closeSesFact();
+        }
     }
 }
