@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/a2delivery</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="connection.username">admin</property>
+        <property name="connection.password">admin</property>
+
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <mapping class="com.mobox.model.Admin"/>
+        <mapping class="com.mobox.model.Client"/>
+        <mapping class="com.mobox.model.Delivers"/>
+        <mapping class="com.mobox.model.Driver"/>
+        <mapping class="com.mobox.model.Order"/>
+        <mapping class="com.mobox.model.Product"/>
+        <mapping class="com.mobox.model.Userss"/>
+        <mapping class="com.mobox.model.Warehouse"/>
+        <mapping class="com.mobox.model.City"/>
+        <mapping class="com.mobox.model.enumInfo.OrderStatus"/>
+
+    </session-factory>
+</hibernate-configuration>
