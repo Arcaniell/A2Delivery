@@ -15,6 +15,9 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
 
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
         <mapping class="com.mobox.model.Admin"/>
         <mapping class="com.mobox.model.Client"/>
         <mapping class="com.mobox.model.Delivers"/>
@@ -24,6 +27,7 @@
         <mapping class="com.mobox.model.Userss"/>
         <mapping class="com.mobox.model.Warehouse"/>
         <mapping class="com.mobox.model.City"/>
+        <mapping class="com.mobox.model.Sale"/>
         <mapping class="com.mobox.model.enumInfo.OrderStatus"/>
 
     </session-factory>

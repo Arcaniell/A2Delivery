@@ -9,4 +9,5 @@ public class TestDB {
         Session session = A2DeliverySessionFact.openSession();
         A2DeliverySessionFact.closeSesFact();
     }
+
 }
