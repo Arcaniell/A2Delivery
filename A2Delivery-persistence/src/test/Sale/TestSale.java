@@ -5,7 +5,6 @@ import com.mobox.dao.A2DeliverySessionFact;
 import com.mobox.model.Product;
 import com.mobox.model.Sale;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
